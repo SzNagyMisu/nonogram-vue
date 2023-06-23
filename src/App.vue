@@ -1,6 +1,9 @@
 <script setup>
 import { computed, ref } from 'vue';
 
+import NonogramTable from './components/NonogramTable.vue';
+
+
 const table = ref([
     [null, null, "black"],
     [null, "black", null],
@@ -17,30 +20,11 @@ const changeColor = (rowIdx, colIdx) => {
 </script>
 
 <template>
-    <section class="table">
-        <section class="row" v-for="(row, rowIdx) in table" :key="rowIdx">
-            <article class="cell" v-for="(cell, colIdx) in row" :key="colIdx" :class="cell" @click="changeColor(rowIdx, colIdx)" />
-        </section>
-    </section>
+    <NonogramTable
+        :table="table"
+        @cellClick="changeColor"
+    />
 </template>
 
 <style scoped>
-section.table {
-    display: inline-block;
-    border: 1px solid black;
-}
-section.row {
-    display: flex;
-}
-article {
-    width: 30px;
-    height: 30px;
-}
-article:hover {
-    border: 1px solid aquamarine;
-    margin: -1px;
-}
-article.black {
-    background-color: black;
-}
 </style>
