@@ -4,6 +4,7 @@ import { computed, ref } from 'vue';
 import SetSize from './components/SetSize.vue';
 import NonogramTable from './components/NonogramTable.vue';
 import HorizontalDefinitions from './components/HorizontalDefinitions.vue';
+import VerticalDefinitions from './components/VerticalDefinitions.vue';
 
 
 const table = ref([
@@ -48,6 +49,7 @@ const setTable = (newRowCount, newColCount) => {
         />
         <HorizontalDefinitions :table="table" />
     </section>
+    <VerticalDefinitions :table="table" />
 </template>
 
 <style scoped>
