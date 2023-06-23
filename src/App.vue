@@ -3,6 +3,7 @@ import { computed, ref } from 'vue';
 
 import SetSize from './components/SetSize.vue';
 import NonogramTable from './components/NonogramTable.vue';
+import HorizontalDefinitions from './components/HorizontalDefinitions.vue';
 
 
 const table = ref([
@@ -40,11 +41,18 @@ const setTable = (newRowCount, newColCount) => {
         @setRowCount="newRowCount => setTable(newRowCount, colCount)"
         @setColCount="newColCount => setTable(rowCount, newColCount)"
     />
-    <NonogramTable
-        :table="table"
-        @cellClick="changeColor"
-    />
+    <section class="flex">
+        <NonogramTable
+            :table="table"
+            @cellClick="changeColor"
+        />
+        <HorizontalDefinitions :table="table" />
+    </section>
 </template>
 
 <style scoped>
+section.flex {
+    display: flex;
+    gap: 3px;
+}
 </style>

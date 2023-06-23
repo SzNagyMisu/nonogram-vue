@@ -20,7 +20,6 @@ const onCellClicked = (rowIdx, colIdx) => emit("cellClick", rowIdx, colIdx);
 
 <style scoped>
 section.table {
-    display: inline-block;
     border: 1px solid black;
 }
 section.row {
