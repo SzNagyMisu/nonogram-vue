@@ -7,11 +7,7 @@ import HorizontalDefinitions from './components/HorizontalDefinitions.vue';
 import VerticalDefinitions from './components/VerticalDefinitions.vue';
 
 
-const table = ref([
-    [null, null, "black"],
-    [null, "black", null],
-    ["black", null, null],
-]);
+const table = ref([]);
 
 const rowCount = computed(() => table.value.length);
 const colCount = computed(() => table.value[0] && table.value[0].length);
@@ -36,6 +32,8 @@ const setTable = (newRowCount, newColCount) => {
 </script>
 
 <template>
+    <h1>Nonogram creator</h1>
+
     <SetSize
         :rowCount="rowCount"
         :colCount="colCount"
