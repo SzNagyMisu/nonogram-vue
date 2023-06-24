@@ -1,17 +1,32 @@
 <script setup>
-import { computed } from 'vue';
-
 const props = defineProps({
     definitions: {
         type: Array,
         required: true,
     },
+    validity: {
+        type: Array,
+        required: false,
+    },
 });
+
+const getColClass = (idx) => {
+    const classList = ["column"];
+    if (props.validity) {
+        const colValidity = props.validity[idx];
+        if (colValidity === true) {
+            classList.push("valid");
+        } else if (colValidity === false) {
+            classList.push("invalid");
+        }
+    }
+    return classList;
+};
 </script>
 
 <template>
     <section class="definitions vertical">
-        <section class="column" v-for="definition in definitions">
+        <section v-for="(definition, idx) in definitions" :class="getColClass(idx)">
             <article v-for="num in definition">{{ num }}</article>
         </section>
     </section>
@@ -26,6 +41,12 @@ section.column {
     width: 30px;
     display: flex;
     flex-direction: column;
+}
+section.column.valid {
+    color: green;
+}
+section.column.invalid {
+    color: red;
 }
 
 article {

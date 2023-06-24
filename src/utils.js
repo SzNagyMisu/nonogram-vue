@@ -58,3 +58,13 @@ export const getNewTable = (newRowCount, newColCount, originalTable) => {
     }
     return newTable;
 }
+
+export const checkValidity = (userProvided, definition) => {
+    if (userProvided.length === definition.length && userProvided.every((num, numIdx) => num === definition[numIdx])) {
+        return true;
+    } else if (userProvided.reduce((sum, num) => sum + num, 0) > definition.reduce((sum, num) => sum + num, 0)) { // TODO
+        return false
+    } else {
+        return null;
+    }
+}
