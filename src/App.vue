@@ -11,6 +11,7 @@ import {
 } from './utils.js';
 
 import SetSize from './components/SetSize.vue';
+import ExportJSON from './components/ExportJSON.vue';
 import NonogramTable from './components/NonogramTable.vue';
 import HorizontalDefinitions from './components/HorizontalDefinitions.vue';
 import VerticalDefinitions from './components/VerticalDefinitions.vue';
@@ -36,6 +37,8 @@ const setTable = (newRowCount, newColCount) => {
 
 <template>
     <h1>Nonogram creator</h1>
+
+    <ExportJSON v-bind="{ horizontalDefinitions, verticalDefinitions }" />
 
     <SetSize
         :rowCount="rowCount"
