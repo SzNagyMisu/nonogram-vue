@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 import Welcome from './views/Welcome.vue';
 import Create from './views/Create.vue';
+import Solve from './views/Solve.vue';
 
 const routes = [
     {
@@ -17,7 +18,7 @@ const routes = [
     {
         name: "solve",
         path: "/solve",
-        component: { template: "TODO" },
+        component: Solve,
     },
 ];
 
