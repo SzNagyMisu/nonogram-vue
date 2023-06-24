@@ -12,10 +12,7 @@ import {
 
 import SetSize from '../components/SetSize.vue';
 import ExportJSON from '../components/ExportJSON.vue';
-import NonogramTable from '../components/NonogramTable.vue';
-import HorizontalDefinitions from '../components/HorizontalDefinitions.vue';
-import VerticalDefinitions from '../components/VerticalDefinitions.vue';
-
+import Nonogram from '../components/Nonogram.vue';
 
 const table = ref([]);
 
@@ -46,19 +43,9 @@ const setTable = (newRowCount, newColCount) => {
         @setRowCount="newRowCount => setTable(newRowCount, colCount)"
         @setColCount="newColCount => setTable(rowCount, newColCount)"
     />
-    <section class="flex">
-        <NonogramTable
-            :table="table"
-            @cellClick="changeColor"
-        />
-        <HorizontalDefinitions :definitions="horizontalDefinitions" />
-    </section>
-    <VerticalDefinitions :definitions="verticalDefinitions" />
+
+    <Nonogram v-bind="{ table, horizontalDefinitions, verticalDefinitions }" @cellClick="changeColor" />
 </template>
 
 <style scoped>
-section.flex {
-    display: flex;
-    gap: 3px;
-}
 </style>
