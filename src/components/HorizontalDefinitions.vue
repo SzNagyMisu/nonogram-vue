@@ -2,32 +2,11 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-    table: {
+    definitions: {
         type: Array,
         required: true,
     },
 });
-
-const definitions = computed(() => props.table.map(numsForRow));
-
-const numsForRow = (row) => {
-    const nums = [];
-    let num = 0;
-    row.forEach(cell => {
-        if (cell === "black") {
-            num++;
-        } else {
-            if (num > 0) {
-                nums.push(num);
-            }
-            num = 0;
-        }
-    });
-    if (num > 0) {
-        nums.push(num);
-    }
-    return nums;
-}
 </script>
 
 <template>
