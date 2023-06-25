@@ -38,6 +38,7 @@ const changeColor = (rowIdx, colIdx) => {
     <ImportJSON    v-if="stepIdx === 0" @setDefinitions="onSetDefinitions" />
     <Nonogram v-else-if="stepIdx === 1"
         v-bind="{ horizontalDefinitions, verticalDefinitions, table }"
+        :showValidity="true"
         @cellClick="changeColor"
     />
 </template>

@@ -44,7 +44,11 @@ const setTable = (newRowCount, newColCount) => {
         @setColCount="newColCount => setTable(rowCount, newColCount)"
     />
 
-    <Nonogram v-bind="{ table, horizontalDefinitions, verticalDefinitions }" @cellClick="changeColor" />
+    <Nonogram
+        v-bind="{ table, horizontalDefinitions, verticalDefinitions }"
+        :showValidity="false"
+        @cellClick="changeColor"
+    />
 </template>
 
 <style scoped>

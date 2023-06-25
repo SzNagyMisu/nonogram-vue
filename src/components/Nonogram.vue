@@ -20,6 +20,10 @@ const props = defineProps({
         type: Array,
         required: true,
     },
+    showValidity: {
+        type: Boolean,
+        required: true,
+    },
 });
 
 const emit = defineEmits(["cellClick"]);
@@ -27,6 +31,8 @@ const emit = defineEmits(["cellClick"]);
 const onCellClick = (rowIdx, colIdx) => emit("cellClick", rowIdx, colIdx);
 
 const horizontalValidity = computed(() => {
+    if (!props.showValidity) return;
+
     const definitionsByTable = getHorizontalDefinitions(props.table);
     return props.horizontalDefinitions.map((numbers, defIdx) => (
         checkValidity(definitionsByTable[defIdx], numbers)
@@ -34,6 +40,8 @@ const horizontalValidity = computed(() => {
 });
 
 const verticalValidity = computed(() => {
+    if (!props.showValidity) return;
+
     const definitionsByTable = getVerticalDefinitions(props.table);
     return props.verticalDefinitions.map((numbers, defIdx) => (
         checkValidity(definitionsByTable[defIdx], numbers)

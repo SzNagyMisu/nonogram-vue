@@ -60,11 +60,20 @@ export const getNewTable = (newRowCount, newColCount, originalTable) => {
 }
 
 export const checkValidity = (userProvided, definition) => {
-    if (userProvided.length === definition.length && userProvided.every((num, numIdx) => num === definition[numIdx])) {
+    const sameLength = userProvided.length === definition.length;
+    const itemsMatch = userProvided.every((num, numIdx) => num === definition[numIdx]);
+    const arrayEquals = sameLength && itemsMatch;
+    if (arrayEquals) {
         return true;
-    } else if (userProvided.reduce((sum, num) => sum + num, 0) > definition.reduce((sum, num) => sum + num, 0)) { // TODO
-        return false
-    } else {
-        return null;
     }
+
+    const userProvidedSum = userProvided.reduce((sum, num) => sum + num, 0);
+    const definitionSum = definition.reduce((sum, num) => sum + num, 0);
+    const userProvidedMax = Math.max(...userProvided);
+    const definitionMax = Math.max(...definition);
+    if (userProvidedSum > definitionSum || userProvidedMax > definitionMax) { // TODO
+        return false
+    }
+
+    return null;
 }
