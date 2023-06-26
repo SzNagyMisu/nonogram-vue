@@ -12,8 +12,8 @@ defineProps({
 
 const emit = defineEmits(["setRowCount", "setColCount"]);
 
-const setRowCount = ($event) => emit("setRowCount", $event.target.value);
-const setColCount = ($event) => emit("setColCount", $event.target.value);
+const setRowCount = ($event) => emit("setRowCount", +$event.target.value);
+const setColCount = ($event) => emit("setColCount", +$event.target.value);
 </script>
 
 <template>

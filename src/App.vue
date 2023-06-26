@@ -5,6 +5,7 @@
     <nav>
         <RouterLink :to="{ name: 'home' }">Home</RouterLink>
         <RouterLink :to="{ name: 'create' }">Create</RouterLink>
+        <RouterLink :to="{ name: 'from-image' }">Convert Image</RouterLink>
         <RouterLink :to="{ name: 'solve' }">Solve</RouterLink>
     </nav>
     <RouterView />
